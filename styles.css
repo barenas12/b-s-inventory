@@ -99,12 +99,12 @@ nav.scrolled { background: rgba(248,250,252,.98); }
 .nav-links a.active { color: var(--primary); }
 
 .nav-cta {
-  background: var(--primary); color: #000;
+  background: var(--whatsapp); color: #fff;
   padding: .45rem 1.1rem; border-radius: 6px;
   font-weight: 700; font-size: .85rem; text-decoration: none;
   transition: background .2s, transform .15s;
 }
-.nav-cta:hover { background: var(--primary-dim); transform: translateY(-1px); }
+.nav-cta:hover { background: var(--whatsapp-hover); transform: translateY(-1px); }
 
 .nav-hamburger {
   display: none; background: none; border: none;
