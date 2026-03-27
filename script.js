@@ -23,35 +23,37 @@ function showPage(name) {
 }
 
 /* ── HEATMAP DEMO (KPI card) ─────────────────────────────── */
+function getCSS(varName, fallback = '') {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  return value || fallback;
+}
+
 function buildHeatmap() {
   const container = document.getElementById('heatmap');
   if (!container) return;
 
   const levels = [
-    '#1a2338','#1a2338','#253048','#f5a623','#ff4d6d','#00d4b8','#00d4b8',
-    '#253048','#1a2338','#f5a623','#ff4d6d','#00d4b8','#00d4b8','#f5a623',
-    '#f5a623','#ff4d6d','#00d4b8','#ff4d6d','#00d4b8','#f5a623','#253048',
-    '#1a2338','#253048','#f5a623','#ff4d6d','#00d4b8','#ff4d6d','#f5a623',
-    '#253048','#1a2338','#1a2338','#253048','#f5a623','#f5a623','#253048',
+    getCSS('--bg3'),
+    getCSS('--bg3'),
+    getCSS('--border'),
+    getCSS('--warning'),
+    getCSS('--danger'),
+    getCSS('--success'),
+    getCSS('--primary-light'),
+    getCSS('--border'),
+    getCSS('--bg3'),
+    getCSS('--warning'),
+    getCSS('--danger'),
+    getCSS('--success'),
+    getCSS('--primary-light')
   ];
-  const labels = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
-  const days   = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
 
-  // Day-of-week headers
-  labels.forEach(d => {
-    const lbl = document.createElement('div');
-    lbl.style.cssText = 'font-size:.6rem;color:var(--muted);text-align:center;padding-bottom:2px;';
-    lbl.textContent = d;
-    container.appendChild(lbl);
-  });
+  container.innerHTML = '';
 
-  // Heat cells
   levels.forEach((color, i) => {
     const cell = document.createElement('div');
     cell.className = 'heat-cell';
     cell.style.background = color;
-    cell.style.animationDelay = (i * 0.03) + 's';
-    cell.title = `Semana ${Math.floor(i / 7) + 1} — ${days[i % 7]}`;
     container.appendChild(cell);
   });
 }
