@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>B&S Inventory — Consultoría · Desarrollo · Equipos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#" class="nav-logo" onclick="showPage('home')">B&S<span>Inventory</span></a>
+  <ul class="nav-links">  
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#" onclick="showPage('products'); return false;">Equipos</a></li>
+    <li><a href="#cta-band">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/573133249981?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios"
+     target="_blank" class="nav-cta">WhatsApp</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="toggleMobileNav()">Servicios</a>
+  <a href="#process"  onclick="toggleMobileNav()">Proceso</a>
+  <a href="#" onclick="showPage('products'); toggleMobileNav(); return false;">Equipos</a>
+  <a href="#cta-band" onclick="toggleMobileNav()">Contacto</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-badge">Tecnología que impulsa tu negocio</div>
+    <h1 class="hero-title">
+      Soluciones digitales<br>
+      <span class="accent">inteligentes</span> para<br>
+      tu <span class="accent2">empresa</span>
+    </h1>
+    <p class="hero-sub">
+      Consultoría en nube, desarrollo de software a medida, gestión de KPIs
+      y venta de equipos tecnológicos. Todo en un solo lugar.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Ver servicios →</a>
+      <a href="#" class="btn-outline" onclick="showPage('products'); return false;">Equipos disponibles</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">Proyectos entregados</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98<span>%</span></div>
+        <div class="stat-label">Satisfacción cliente</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <div class="section-label">Lo que ofrezco</div>
+      <h2 class="section-title">Servicios especializados<br>para cada necesidad</h2>
+      <p class="section-desc">
+        Desde la infraestructura hasta la inteligencia de negocio, cubrimos toda
+        la cadena digital de tu empresa.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- CLOUD -->
+      <div class="service-card">
+        <div class="service-icon teal">☁️</div>
+        <div class="service-name">Consultoría en Nube</div>
+        <div class="service-desc">
+          Diseño y optimización de arquitecturas cloud para AWS, Azure y GCP.
+          Migración de servidores, configuración de redes y ciberseguridad
+          integral: firewall, IAM, monitoreo y respuesta a incidentes.<br><br>
+          <strong style="color:var(--text)">¿Listo para ir a la nube?</strong>
+          Hacemos el proceso de principio a fin: consultoría, configuración
+          y despliegue completo.
+        </div>
+        <div class="service-tags">
+          <span class="tag teal">AWS · Azure · GCP</span>
+          <span class="tag teal">Servidores</span>
+          <span class="tag teal">Ciberseguridad</span>
+          <span class="tag teal">Despliegue</span>
+        </div>
+      </div>
+
+      <!-- DEVELOPMENT -->
+      <div class="service-card">
+        <div class="service-icon amber">💻</div>
+        <div class="service-name">Desarrollo de Software</div>
+        <div class="service-desc">
+          Creamos aplicaciones a medida desde cero adaptadas exactamente a tu
+          flujo de trabajo. Páginas web profesionales con diseño exclusivo o
+          administración y mantenimiento de la tuya.<br><br>
+          También automatizamos procesos repetitivos para que tu equipo se
+          enfoque en lo que realmente importa.
+        </div>
+        <div class="service-tags">
+          <span class="tag amber">Apps a medida</span>
+          <span class="tag amber">Páginas web</span>
+          <span class="tag amber">Administración web</span>
+          <span class="tag amber">Automatizaciones</span>
+        </div>
+      </div>
+
+      <!-- KPI — full width -->
+      <div class="service-card kpi-card">
+        <div class="kpi-inner">
+          <div>
+            <div class="service-icon red">📊</div>
+            <div class="service-name">Gestión de KPIs & Cobranza</div>
+            <div class="service-desc">
+              Diseñamos planes semana a semana para maximizar el recaudo de tu
+              cartera. Tableros de seguimiento en tiempo real, mapas de calor
+              por agente, horario y tipología de llamada.<br><br>
+              Optimizamos los indicadores de tu
+              <strong style="color:var(--text)">call center de cobranza</strong>:
+              tasa de contacto, promesa de pago, cumplimiento y eficiencia
+              por campaña.
+            </div>
+            <div class="service-tags">
+              <span class="tag red">Plan semanal</span>
+              <span class="tag red">Mapa de calor</span>
+              <span class="tag red">KPI recaudo</span>
+              <span class="tag red">Call center</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.7rem;">
+              Mapa de calor — demo recaudo
+            </div>
+            <div class="kpi-visual" id="heatmap"></div>
+            <div style="display:flex;gap:.6rem;margin-top:.8rem;font-size:.72rem;color:var(--muted);">
+              <span>● Bajo</span>
+              <span style="color:#f5a623">● Medio</span>
+              <span style="color:#ff4d6d">● Alto</span>
+              <span style="color:#00d4b8">● Óptimo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process">
+    <div class="section-header">
+      <div class="section-label">Metodología</div>
+      <h2 class="section-title">Cómo trabajamos juntos</h2>
+    </div>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-dot">01</div>
+        <div class="step-label">Diagnóstico</div>
+        <div class="step-sub">Entendemos tu situación actual</div>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">02</div>
+        <div class="step-label">Propuesta</div>
+        <div class="step-sub">Plan detallado y cronograma</div>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">03</div>
+        <div class="step-label">Desarrollo</div>
+        <div class="step-sub">Ejecución ágil con reportes</div>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">04</div>
+        <div class="step-label">Entrega</div>
+        <div class="step-sub">Pruebas, ajustes y go-live</div>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">05</div>
+        <div class="step-label">Soporte</div>
+        <div class="step-sub">Acompañamiento post-entrega</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta-band">
+    <div class="section-label" style="justify-content:center">Hablemos</div>
+    <h2>¿Tienes un proyecto en mente?</h2>
+    <p>Escríbenos por WhatsApp y agendamos una llamada gratuita de 30 minutos.</p>
+    <a href="https://wa.me/573133249981?text=Hola,%20me%20gustaría%20hablar%20sobre%20un%20proyecto"
+       target="_blank" class="wa-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.847L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.598-.504-5.098-1.383l-.366-.217-3.74.981.997-3.645-.237-.376A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Chatear por WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    <div>© 2025 <strong>B&S Inventory</strong>. Todos los derechos reservados.</div>
+    <div style="display:flex;gap:1.5rem">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="https://wa.me/573133249981" target="_blank">WhatsApp</a>
+    </div>
+  </footer>
+
+</div><!-- /page-home -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE: PRODUCTS
+═══════════════════════════════════════════════════════ -->
+<div id="page-products" class="page">
+
+  <div class="products-hero">
+    <h1>Equipos Tecnológicos</h1>
+    <p>Encuentra el equipo perfecto para tu empresa o uso personal. Preguntas y pedidos por WhatsApp.</p>
+  </div>
+
+  <div class="products-layout">
+
+    <!-- SIDEBAR FILTERS -->
+    <aside class="filters-sidebar">
+
+      <div class="filter-group">
+        <div class="filter-group-title">Categoría</div>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="laptop" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Laptops</span><span class="check-count">5</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="desktop" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Desktops</span><span class="check-count">3</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="monitor" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Monitores</span><span class="check-count">3</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="networking" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Redes</span><span class="check-count">3</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="server" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Servidores</span><span class="check-count">2</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="category" value="storage" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Almacenamiento</span><span class="check-count">2</span>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">Marca</div>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="Dell" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Dell</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="HP" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">HP</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="Lenovo" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Lenovo</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="Apple" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Apple</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="Cisco" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Cisco</span>
+        </label>
+        <label class="filter-check">
+          <input type="checkbox" data-filter="brand" value="Samsung" onchange="applyFilters()">
+          <span class="check-box"></span><span class="check-label">Samsung</span>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">Rango de precio</div>
+        <div class="price-range">
+          <div class="range-track">
+            <div class="range-fill" id="rangeFill"></div>
+            <input type="range" id="priceMin" min="0" max="30000000" step="500000" value="0"        oninput="updateRange()">
+            <input type="range" id="priceMax" min="0" max="30000000" step="500000" value="30000000" oninput="updateRange()">
+          </div>
+          <div class="price-labels">
+            <span id="labelMin">$0</span>
+            <span id="labelMax">$30.000.000</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-clear" onclick="clearFilters()">✕ Limpiar filtros</button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="products-topbar">
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Buscar equipos..." oninput="applyFilters()">
+        </div>
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+          <option value="default">Ordenar por</option>
+          <option value="price-asc">Precio: Menor a mayor</option>
+          <option value="price-desc">Precio: Mayor a menor</option>
+          <option value="name">Nombre A-Z</option>
+        </select>
+        <div class="results-count" id="resultsCount"></div>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </main>
+
+  </div>
+
+  <footer style="margin-top:2rem">
+    <div>© 2025 <strong>B&S Inventory</strong>. Todos los derechos reservados.</div>
+    <div style="display:flex;gap:1.5rem">
+      <a href="#" onclick="showPage('home'); return false;">← Volver a inicio</a>
+      <a href="https://wa.me/573133249981" target="_blank">WhatsApp</a>
+    </div>
+  </footer>
+
+</div><!-- /page-products -->
+
+
+<!-- ── PRODUCT MODAL ────────────────────────────────────── -->
+<div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img"  id="modalImg"></div>
+    <div class="modal-body">
+      <div class="modal-brand"     id="modalBrand"></div>
+      <div class="modal-title"     id="modalTitle"></div>
+      <div class="modal-price-row">
+        <div class="modal-price"     id="modalPrice"></div>
+        <div class="modal-old-price" id="modalOldPrice"></div>
+      </div>
+      <div class="modal-desc"  id="modalDesc"></div>
+      <div class="specs-grid"  id="modalSpecs"></div>
+      <div class="modal-actions">
+        <button class="modal-wa-btn" id="modalWaBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.847L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.598-.504-5.098-1.383l-.366-.217-3.74.981.997-3.645-.237-.376A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Preguntar por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS va al final del body para que el DOM ya esté listo -->
+<script src="script.js"></script>
+</body>
+</html>
