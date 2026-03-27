@@ -7,14 +7,16 @@
 
 :root {
   /* palette principal (cambiable desde un solo lugar) */
-  --primary:        #1e3a8a;    /* azul tecnología */
+  --primary:        #2196F3;    /* azul tecnología */
   --primary-rgb:    30,58,138;
   --primary-dim:    #2563eb;
   --accent:         #7c3aed;    /* morado innovación */
   --accent-rgb:     124,58,237;
   --success:        #16a34a;    /* verde éxito/datos */
   --success-rgb:    22,163,74;
-  --danger:         #dc2626;
+  --danger:         #f59e0b;    /* naranja pastel / semilla */
+  --danger-rgb:     245,158,11;
+  --danger-dark:    #92400e;    /* texto para tag red */
 
   /* base y neutros */
   --bg:             #f8fafc;
@@ -311,7 +313,7 @@ nav.scrolled { background: rgba(248,250,252,.98); }
 }
 .tag.teal  { background: rgba(0,212,184,.12); color: var(--primary);  border: 1px solid rgba(0,212,184,.2); }
 .tag.amber { background: rgba(var(--accent-rgb, 124,58,237),.1);  color: var(--accent); border: 1px solid rgba(var(--accent-rgb, 124,58,237),.2); }
-.tag.red   { background: rgba(var(--danger-rgb, 220,38,38),.1);  color: var(--danger);   border: 1px solid rgba(var(--danger-rgb, 220,38,38),.2); }
+.tag.red   { background: rgba(var(--danger-rgb, 245,158,11),.13); color: var(--danger-dark); border: 1px solid rgba(var(--danger-rgb, 245,158,11),.35); }
 
 /* KPI card */
 .service-card.kpi-card { grid-column: 1 / -1; }
