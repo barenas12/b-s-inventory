@@ -62,20 +62,22 @@ function buildHeatmap() {
 // Agrega, modifica o elimina productos según tu inventario real.
 const products = [
   {
-    id: 1, brand: 'Dell', name: 'Dell Latitude 5540',
-    category: 'laptop', price: 4800000, oldPrice: 5500000,
-    badge: 'sale', emoji: '💻',
-    shortDesc: 'Laptop empresarial i5-13ª gen, 16GB RAM, SSD 512GB.',
-    fullDesc: 'La Dell Latitude 5540 está diseñada para profesionales que necesitan potencia y durabilidad. Certificada MIL-SPEC, con batería de larga duración y pantalla antireflejos FHD. Ideal para trabajo corporativo y teletrabajo exigente.',
-    specs: { Procesador: 'Intel Core i5-1345U', RAM: '16 GB DDR4', Almacenamiento: 'SSD 512 GB NVMe', Pantalla: '15.6" FHD IPS', SO: 'Windows 11 Pro', Garantía: '1 año en sitio' },
+    id: 1, brand: 'Kalley', name: 'Televisor Kalley 32"',
+    category: 'tv', price: 977500, oldPrice: 1299900,
+    badge: 'sale',
+    image: 'img/implements/tv-kalley-32.png',
+    shortDesc: 'TV Kalley 32", Google TV FULL HD 1080P',
+    fullDesc: 'TV Kalley Full HD QLED cuenta con una increíble pantalla que, gracias a su tecnología de puntos cuánticos, te ofrece colores vibrantes y realistas. Con compatibilidad HDR 10, disfrutarás de tu contenido favorito con mayor detalle y contraste. Sumérgete en una experiencia envolvente con Dolby Audio y activa el asistente de voz desde tu control. Su sistema operativo google TV tiene más de 10.000 apps, recomendaciones personalizadas y te permite controlar todos tus dispositivos inteligentes del hogar.',
+    specs: { Marca: 'Kalley', Resolución: 'Full HD 1080p', Pantalla: '32"', SO: 'Google TV', Puertos: 'Puerto Auxiliar Audio, HDM, LAN/ETHERNET, USB', Garantía: '2 años de Garantía con la marca' },
   },
   {
-    id: 2, brand: 'Apple', name: 'MacBook Air M3',
-    category: 'laptop', price: 8900000, oldPrice: null,
-    badge: 'new', emoji: '🍎',
-    shortDesc: 'Chip M3, 8GB RAM unificada, SSD 256GB, pantalla Liquid Retina.',
-    fullDesc: 'El MacBook Air M3 ofrece un rendimiento excepcional sin ventiladores, hasta 18 horas de batería y la pantalla Liquid Retina más brillante. Perfecto para diseñadores, desarrolladores y creativos.',
-    specs: { Procesador: 'Apple M3 (8 núcleos)', RAM: '8 GB Unificada', Almacenamiento: 'SSD 256 GB', Pantalla: '13.6" Liquid Retina', SO: 'macOS Sonoma', Garantía: '1 año AppleCare' },
+    id: 2, brand: 'Lenovo', name: 'Lenovo V14 Gen 4 IRU',
+    category: 'laptop', price: 1924440, oldPrice: null,
+    badge: 'new',
+    image:'img/implements/Lenovo V14 Gen 4 IRU.png',
+    shortDesc: 'Intel Core i5-13420h, 8GB RAM, SSD 512GB y 14"FHD',
+    fullDesc: 'Equipo portatil con procesador Intel Core i5-13420H 8C, Memoria RAM 8GB Soldered, 1 slot adicional para ampliar, 512GB SSD M2, pantalla de 14", no incluye sistema operativo, conectividad Wi-Fi 6, 1 puerto UBS 2.0 UBS 3.2 Gen 1, USBC, HMDI, Ethernet rj45',
+    specs: { Procesador: 'Intel Core i5-13420h', RAM: '8 GB + SLOT', Almacenamiento: 'SSD 512 GB', Pantalla: '14" FHD (Full High Definition)', SO: 'Sin Sistema Operativo', Garantía: '1 año con la marca' },
   },
   {
     id: 3, brand: 'Lenovo', name: 'ThinkPad X1 Carbon Gen 11',
@@ -207,7 +209,7 @@ function updateRange() {
   const fill = document.getElementById('rangeFill');
   const pct1 = (priceMin / 30000000) * 100;
   const pct2 = (priceMax / 30000000) * 100;
-  fill.style.left  = pct1 + '%';
+  fill.style.left = pct1 + '%';
   fill.style.width = (pct2 - pct1) + '%';
 
   document.getElementById('labelMin').textContent = formatPrice(priceMin);
@@ -227,25 +229,25 @@ function getChecked(filterAttr) {
 
 /* ── FILTER & RENDER ─────────────────────────────────────── */
 function applyFilters() {
-  const cats   = getChecked('category');
+  const cats = getChecked('category');
   const brands = getChecked('brand');
   const search = document.getElementById('searchInput').value.toLowerCase().trim();
-  const sort   = document.getElementById('sortSelect').value;
+  const sort = document.getElementById('sortSelect').value;
 
   let filtered = products.filter(p => {
-    if (cats.length   && !cats.includes(p.category))   return false;
-    if (brands.length && !brands.includes(p.brand))    return false;
-    if (p.price < priceMin || p.price > priceMax)      return false;
+    if (cats.length && !cats.includes(p.category)) return false;
+    if (brands.length && !brands.includes(p.brand)) return false;
+    if (p.price < priceMin || p.price > priceMax) return false;
     if (search &&
-        !p.name.toLowerCase().includes(search) &&
-        !p.brand.toLowerCase().includes(search) &&
-        !p.shortDesc.toLowerCase().includes(search))   return false;
+      !p.name.toLowerCase().includes(search) &&
+      !p.brand.toLowerCase().includes(search) &&
+      !p.shortDesc.toLowerCase().includes(search)) return false;
     return true;
   });
 
-  if (sort === 'price-asc')  filtered.sort((a, b) => a.price - b.price);
+  if (sort === 'price-asc') filtered.sort((a, b) => a.price - b.price);
   if (sort === 'price-desc') filtered.sort((a, b) => b.price - a.price);
-  if (sort === 'name')       filtered.sort((a, b) => a.name.localeCompare(b.name));
+  if (sort === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
 
   renderProducts(filtered);
   document.getElementById('resultsCount').textContent =
@@ -286,7 +288,10 @@ function renderProducts(list) {
     <div class="product-card" onclick="openModal(${p.id})">
       <div class="product-img">
         ${p.badge ? `<span class="product-badge badge-${p.badge}">${badgeLabel}</span>` : ''}
-        <span style="font-size:4.5rem;position:relative;z-index:1">${p.emoji}</span>
+        ${p.image
+        ? `<img src="${p.image}" alt="${p.name}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">`
+        : `<span style="font-size:4.5rem;position:relative;z-index:1">${p.emoji}</span>`
+      }
       </div>
       <div class="product-body">
         <div class="product-brand">${p.brand}</div>
@@ -315,20 +320,51 @@ function openModal(id) {
   const p = products.find(x => x.id === id);
   if (!p) return;
 
-  document.getElementById('modalImg').textContent        = p.emoji;
-  document.getElementById('modalBrand').textContent      = p.brand;
-  document.getElementById('modalTitle').textContent      = p.name;
-  document.getElementById('modalPrice').textContent      = formatPrice(p.price);
-  document.getElementById('modalOldPrice').textContent   = p.oldPrice ? formatPrice(p.oldPrice) : '';
-  document.getElementById('modalDesc').textContent       = p.fullDesc;
+  // 1. Manejo de Imagen o Emoji
+  const modalImgContainer = document.getElementById('modalImg');
+  if (p.image) {
+    modalImgContainer.innerHTML = `<img src="${p.image}" alt="${p.name}" style="max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px;">`;
+  } else {
+    modalImgContainer.innerHTML = `<span style="font-size: 5rem;">${p.emoji || ''}</span>`;
+  }
 
-  document.getElementById('modalSpecs').innerHTML =
-    Object.entries(p.specs).map(([k, v]) => `
-      <div class="spec-item">
-        <div class="spec-key">${k}</div>
-        <div class="spec-val">${v}</div>
-      </div>`).join('');
+  // 2. Información básica (Ajustado a tus IDs actuales)
+  document.getElementById('modalBrand').textContent = p.brand;
+  
+  // OJO: En tu HTML el ID es "modalTitle", en el script solía ser "modalName"
+  const titleElem = document.getElementById('modalTitle');
+  if(titleElem) titleElem.textContent = p.name;
 
+  // OJO: En tu HTML el ID es "modalDesc", en el script solía ser "modalFullDesc"
+  const descElem = document.getElementById('modalDesc');
+  if(descElem) descElem.textContent = p.fullDesc;
+
+  // 3. Precios
+  document.getElementById('modalPrice').textContent = formatPrice(p.price);
+  const oldPriceElem = document.getElementById('modalOldPrice');
+  if (p.oldPrice) {
+    oldPriceElem.textContent = formatPrice(p.oldPrice);
+    oldPriceElem.style.display = 'inline';
+  } else {
+    oldPriceElem.style.display = 'none';
+  }
+
+  // 4. Especificaciones (Specs)
+  const specsList = document.getElementById('modalSpecs');
+  specsList.innerHTML = ''; // Limpiamos lo que haya
+  
+  for (const [key, value] of Object.entries(p.specs)) {
+    const specItem = document.createElement('div');
+    specItem.className = 'spec-item';
+    specItem.innerHTML = `
+      <div class="spec-key">${key}</div>
+      <div class="spec-val">${value}</div>
+    `;
+    specsList.appendChild(specItem);
+  }
+
+  // 5. Mostrar Modal
+  document.getElementById('productModal').style.display = 'flex';
   document.getElementById('modalWaBtn').onclick = () => askWA(id);
   document.getElementById('productModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -337,8 +373,8 @@ function openModal(id) {
 function closeModal(e) {
   // Allow closing via overlay click or the × button
   if (e) {
-    const isOverlay   = e.target === document.getElementById('productModal');
-    const isCloseBtn  = e.target.classList.contains('modal-close');
+    const isOverlay = e.target === document.getElementById('productModal');
+    const isCloseBtn = e.target.classList.contains('modal-close');
     if (!isOverlay && !isCloseBtn) return;
   }
   document.getElementById('productModal').classList.remove('open');
